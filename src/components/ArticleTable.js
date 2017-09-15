@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import { Table } from 'antd'
 
 const columns = [{
@@ -20,7 +21,10 @@ const columns = [{
 }]
 
 const ArticleTable = (props) => {
-  return <Table pagination={false} columns={columns} dataSource={props.articles}/>
+  return <Table pagination={false} columns={columns} dataSource={props.articles}
+    onRowClick={(record, index) => {
+      props.history.push('/articles/' + record.id)
+    }}/>
 }
 
-export default ArticleTable
+export default withRouter(ArticleTable)

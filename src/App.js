@@ -15,6 +15,7 @@ class App extends Component {
   render() {
     const { Content, Footer } = Layout
     const articles = data.map(article => ({
+      id: article.id,
       title: article.title,
       author: article.author,
       date: Date.now(),

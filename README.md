@@ -1,14 +1,16 @@
-# Kiwi-Blog
-A blog implemented by React, Redux and express.
+# kiwi-blog
+A blog implemented by React, Redux, Ant-design and Express.
 
 ## About
 
-This is a starter boilerplate app I've put together using the following technologies:
+This is a blog app I've put together using the following technologies:
 
 * [React](https://github.com/facebook/react)
 * [Redux](https://github.com/rackt/redux)'s futuristic [Flux](https://facebook.github.io/react/blog/2014/05/06/flux.html) implementation
+* [Ant-design](https://github.com/ant-design/ant-design) for UI design
 * [React Router](https://github.com/rackt/react-router)
 * [React Router Redux](https://github.com/reactjs/react-router-redux) Redux/React Router bindings
+* [Create React App](https://github.com/facebookincubator/create-react-app) for boilerplate
 * [Express](http://expressjs.com)
 * [Babel](http://babeljs.io) for ES6 and ES7 magic
 * [Webpack](http://webpack.github.io) for bundling
