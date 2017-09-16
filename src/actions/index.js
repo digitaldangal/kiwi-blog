@@ -1,4 +1,4 @@
-import * as types from '../constants/actionTypes'
+import * as types from '../constants/ActionTypes'
 import blog from '../api/blog'
 
 export const requestArticles = () => ({
@@ -7,11 +7,12 @@ export const requestArticles = () => ({
 
 export const receiveArticles = json => ({
   type: types.RECEIVE_ARTICLES,
-  articles: json.data.children.map(child => child.data)
+  //articles: json.data.children.map(child => child.data)
+  articles: json
 })
 
 // asyn fetch articles from sever
-export const fetchArticles = dispatch => {
+export const fetchArticles = () => dispatch => {
   dispatch(requestArticles())
   return blog.getArticles((json) => dispatch(receiveArticles(json)))
 }
@@ -38,6 +39,7 @@ export const addArticle = article => dispatch => {
     () => dispatch(addArticleFailure()))
 }
 
+/*
 export const deleteArticle = (id) => ({
   type: types.DELETE_ARTICLE,
   id
@@ -47,4 +49,4 @@ export const editArticle = (id, article) => ({
   type: types.EDIT_ARTICLE,
   id,
   article
-})
+})*/

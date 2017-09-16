@@ -5,10 +5,10 @@ import {
 } from 'react-router-dom'
 import { Layout, Breadcrumb } from 'antd'
 import BlogHeader from './components/BlogHeader'
-import CardList from './components/CardList'
 import About from './components/About'
 import Article from './components/Article'
 import ArticleTable from './components/ArticleTable'
+import CardListContainer from './containers/CardListContainer'
 import data from './api/data'
 
 class App extends Component {
@@ -31,7 +31,7 @@ class App extends Component {
               <Breadcrumb.Item>List</Breadcrumb.Item>
               <Breadcrumb.Item>App</Breadcrumb.Item>
             </Breadcrumb>
-            <Route exact path="/" render={() => <CardList data={data}/>}/>
+            <Route exact path="/" render={() => <CardListContainer/>}/>
             <Route path="/list" render={() => <ArticleTable articles={articles}/>}/>
             <Route path="/about" component={About}/>
             <Route path="/articles/:id" component={Article}/>

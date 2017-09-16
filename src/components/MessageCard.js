@@ -3,11 +3,15 @@ import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
 import { Card, Rate, Tag } from 'antd'
 
-const MessageCard = ({id, title, tags, content, rate, history}) => {
-  const tgs = tags.map(tag => <Tag key={tag}>{tag}</Tag>)
+const MessageCard = ({id, title, tags, content, rate, loading, history}) => {
+  let tgs;
+  if (tags !== undefined) {
+    tgs = tags.map(tag => <Tag key={tag}>{tag}</Tag>)
+  }
   return (<Card
     title={title} 
     extra={tgs}
+    loading={loading}
     style={{ width: "100%" }}
     onClick={() => {history.push('/articles/' + id)}}>
     <div>{content}</div>
