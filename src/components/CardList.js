@@ -4,14 +4,13 @@ import MessageCard from './MessageCard'
 const LoadingCard = <MessageCard loading/>
 
 const CardList = (props) => {
-  const articles = props.articles
   // empty articles means browers is still fetching data
   // so we display a loading card instead
-  if (articles.length === 0) {
+  if (props.isFetching || props.data === undefined) {
     return LoadingCard
   }
 
-  const cards = articles.map(msg => {
+  const cards = props.data.map(msg => {
     const cardsWithSpace = <div key={msg.id}>
     <MessageCard
       id={msg.id}

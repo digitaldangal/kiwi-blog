@@ -4,14 +4,25 @@ import {
   ADD_ARTICLE_REQUEST
 } from '../constants/ActionTypes'
 
-const initialState = []
+const initialState = {
+  data: [],
+  isFetching: false,
+  sortedBy: ''
+}
 
 export default function articles(state = initialState, action) {
   switch (action.type) {
     case REQUEST_ARTICLES:
-      return state
+      return {
+        ...state,
+        isFetching: true
+      }
     case RECEIVE_ARTICLES:
-      return action.articles
+      return {
+        ...state,
+        isFetching: false,
+        data: action.data
+      }
     default:
       return state
   }

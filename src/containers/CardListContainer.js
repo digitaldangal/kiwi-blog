@@ -10,13 +10,13 @@ class CardListContainer extends Component {
   }
 
   render() {
-    return <CardList loading={this.props.isFetching} articles={this.props.articles}/>
+    return <CardList data={this.props.data} isFetching={this.props.isFetching}/>
   }
 }
 
 const mapStateToProps = state => ({
-  articles: state.articles,
-  isFetching: state.isFetching
+  data: state.articles.data,
+  isFetching: state.articles.isFetching
 })
 
 const mapDispatchToProps = dispatch => ({

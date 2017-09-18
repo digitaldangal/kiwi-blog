@@ -1,4 +1,4 @@
-import data from './data.js'
+import articles from './data.js'
 
 const TIMEOUT = 1000
 
@@ -9,7 +9,7 @@ export default {
       .then(response => response.json())
       .then(json => cb(json))
     */
-    setTimeout(() => cb(data), TIMEOUT)
+    setTimeout(() => cb(articles.data), TIMEOUT)
   },
 
   addArticle: (article, success, failure) => {

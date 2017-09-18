@@ -9,16 +9,16 @@ import About from './components/About'
 import Article from './components/Article'
 import ArticleTable from './components/ArticleTable'
 import CardListContainer from './containers/CardListContainer'
-import data from './api/data'
+import articles from './api/data'
 
 class App extends Component {
   render() {
     const { Content, Footer } = Layout
-    const articles = data.map(article => ({
+    const table = articles.data.map(article => ({
       id: article.id,
       title: article.title,
       author: article.author,
-      date: Date.now(),
+      date: article.date,
       traffic: article.traffic
     }))
     return (
@@ -32,7 +32,7 @@ class App extends Component {
               <Breadcrumb.Item>App</Breadcrumb.Item>
             </Breadcrumb>
             <Route exact path="/" render={() => <CardListContainer/>}/>
-            <Route path="/list" render={() => <ArticleTable articles={articles}/>}/>
+            <Route path="/list" render={() => <ArticleTable articles={table}/>}/>
             <Route path="/about" component={About}/>
             <Route path="/articles/:id" component={Article}/>
           </Content>

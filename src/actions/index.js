@@ -8,7 +8,7 @@ export const requestArticles = () => ({
 export const receiveArticles = json => ({
   type: types.RECEIVE_ARTICLES,
   //articles: json.data.children.map(child => child.data)
-  articles: json
+  data: json
 })
 
 // asyn fetch articles from sever
