@@ -6,14 +6,14 @@ const LoadingCard = <MessageCard loading/>
 const CardList = (props) => {
   // empty articles means browers is still fetching data
   // so we display a loading card instead
-  if (props.isFetching || props.data === undefined) {
+  if (props.isFetching) {
     return LoadingCard
   }
-
-  const cards = props.data.map(msg => {
-    const cardsWithSpace = <div key={msg.id}>
+  let data = props.data || {}
+  const cards = data.map(msg => {
+    const cardsWithSpace = <div key={msg.key}>
     <MessageCard
-      id={msg.id}
+      id={msg.key}
       title={msg.title}
       tags={msg.tags}
       content={msg.content}

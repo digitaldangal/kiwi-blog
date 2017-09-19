@@ -7,20 +7,12 @@ import { Layout, Breadcrumb } from 'antd'
 import BlogHeader from './components/BlogHeader'
 import About from './components/About'
 import Article from './components/Article'
-import ArticleTable from './components/ArticleTable'
+import ArticleTableContainer from './containers/ArticleTableContainer'
 import CardListContainer from './containers/CardListContainer'
-import articles from './api/data'
 
 class App extends Component {
   render() {
     const { Content, Footer } = Layout
-    const table = articles.data.map(article => ({
-      id: article.id,
-      title: article.title,
-      author: article.author,
-      date: article.date,
-      traffic: article.traffic
-    }))
     return (
       <Router>
         <Layout className='layout'>
@@ -31,8 +23,8 @@ class App extends Component {
               <Breadcrumb.Item>List</Breadcrumb.Item>
               <Breadcrumb.Item>App</Breadcrumb.Item>
             </Breadcrumb>
-            <Route exact path="/" render={() => <CardListContainer/>}/>
-            <Route path="/list" render={() => <ArticleTable articles={table}/>}/>
+            <Route exact path="/" component={CardListContainer}/>
+            <Route path="/list" component={ArticleTableContainer}/>
             <Route path="/about" component={About}/>
             <Route path="/articles/:id" component={Article}/>
           </Content>

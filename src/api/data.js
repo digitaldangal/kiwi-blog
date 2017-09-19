@@ -7,7 +7,7 @@ function rand() {
 }
 const data = [
   {
-    id: uuidv4(),
+    key: uuidv4(),
     title: 'Thinking in Java',
     tags: ['java', 'programming'],
     author: 'kenny',
@@ -17,7 +17,7 @@ const data = [
     traffic: rand()
   },
   {
-    id: uuidv4(),
+    key: uuidv4(),
     title: 'How to learn Redux',
     tags: ['js', 'frontend', 'mvc'],
     author: 'kyle',
@@ -27,7 +27,7 @@ const data = [
     traffic: rand()
   },
   {
-    id: uuidv4(),
+    key: uuidv4(),
     title: 'Machine learning',
     tags: [],
     author: 'stan',
@@ -37,7 +37,7 @@ const data = [
     traffic: rand()
   },
   {
-    id: uuidv4(),
+    key: uuidv4(),
     title: 'Java Concurrent In Practice',
     tags: ['concurrency', 'java'],
     author: 'butter',
@@ -47,7 +47,7 @@ const data = [
     traffic: rand()
   },
   {
-    id: uuidv4(),
+    key: uuidv4(),
     title: 'Algorithms',
     tags: ['algorithms'],
     author: 'carman',
@@ -57,7 +57,7 @@ const data = [
     traffic: rand()
   },
   {
-    id: uuidv4(),
+    key: uuidv4(),
     title: 'Thinking in Java',
     tags: ['java', 'programming'],
     author: 'P.C priciple',
@@ -67,7 +67,7 @@ const data = [
     traffic: rand()
   },
   {
-    id: uuidv4(),
+    key: uuidv4(),
     title: 'How to learn Redux',
     tags: ['js', 'frontend', 'mvc'],
     author: 'mike',
@@ -77,7 +77,7 @@ const data = [
     traffic: rand()
   },
   {
-    id: uuidv4(),
+    key: uuidv4(),
     title: 'Machine learning',
     tags: [],
     author: 'jessica',

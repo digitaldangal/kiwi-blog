@@ -1,14 +1,13 @@
 import {
   REQUEST_ARTICLES, 
-  RECEIVE_ARTICLES, 
-  ADD_ARTICLE_REQUEST
+  RECEIVE_ARTICLES
 } from '../constants/ActionTypes'
 
 const initialState = {
   data: [],
-  isFetching: false,
-  sortedBy: ''
+  isFetching: false
 }
+
 
 export default function articles(state = initialState, action) {
   switch (action.type) {
