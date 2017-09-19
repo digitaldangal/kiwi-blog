@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { Table } from 'antd'
-import { fetchArticlesIfNeeded } from '../actions'
+import { fetchArticlesIfNeeded, filterArticles } from '../actions'
 
 /**
  * We use react's state manager instead of redux here
@@ -81,7 +81,7 @@ class ArticleTableContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  data: state.articles.data,
+  data: filterArticles(state.articles.data, state.articles.keywords),
   isFetching: state.articles.isFetching,
 })
 

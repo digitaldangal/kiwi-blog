@@ -1,17 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Layout, Input, Menu, Icon } from 'antd'
-
+import { Layout, Menu, Icon } from 'antd'
+import SearchContainer from '../containers/SearchContainer'
 const Header = Layout.Header
-const Search = Input.Search
 
 const BlogHeader = () => (
   <Header style={{ position: 'fixed', width: '100%', zIndex: '10000' }}>
-    <Search
-      placeholder='input search text'
-      style={{ width: 150 }}
-      onSearch={value => console.log(value)}
-    />
+    <SearchContainer/>
     <Menu
       theme='dark'
       mode='horizontal'

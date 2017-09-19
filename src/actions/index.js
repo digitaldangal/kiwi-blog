@@ -64,3 +64,22 @@ export const editArticle = (id, article) => ({
   id,
   article
 })*/
+
+export const search = keywords => ({
+  type: types.SEARCH,
+  keywords
+})
+
+// return true if and only if content contains all keywords
+const match = (content, keywords) => {
+  const lowerCaseContent = content.toLowerCase();
+  return keywords.every(keyword => lowerCaseContent.includes(keyword.toLowerCase()))
+}
+
+export const filterArticles = (articles, keywords) => {
+  return articles.filter(article => 
+    match(article.title, keywords) ||
+    match(article.content, keywords) ||
+    match(article.author, keywords)
+  )
+}
