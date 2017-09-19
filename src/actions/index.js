@@ -11,10 +11,24 @@ export const receiveArticles = json => ({
   data: json
 })
 
-// asyn fetch articles from sever
+// Asyn fetch articles from sever.
+// Most of time, we call fetchArticlesIfNeeded instead of this action
+// since we don't need to fetch data each time user make a request.
+// Call this action only if we modify(add/delete/edit) articles
 export const fetchArticles = () => dispatch => {
   dispatch(requestArticles())
   return blog.getArticles((json) => dispatch(receiveArticles(json)))
+}
+
+// Fetch data from server only if state.data is empty.
+const shouldFetchArticles = state => {
+  return state.articles.data.length === 0
+}
+
+export const fetchArticlesIfNeeded = () => (dispatch, getState) => {
+  if (shouldFetchArticles(getState())) {
+    return dispatch(fetchArticles())
+  }
 }
 
 export const addArticleRequest = (article) => ({

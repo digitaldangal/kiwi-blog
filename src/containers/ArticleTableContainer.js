@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { Table } from 'antd'
-import { fetchArticles } from '../actions'
+import { fetchArticlesIfNeeded } from '../actions'
 
 /**
  * We use react's state manager instead of redux here
@@ -30,7 +30,7 @@ class ArticleTableContainer extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchArticles()
+    this.props.fetchArticlesIfNeeded()
   }
 
   handleChange = (pagination, filters, sorter) => {
@@ -86,7 +86,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchArticles: () => dispatch(fetchArticles())
+  fetchArticlesIfNeeded: () => dispatch(fetchArticlesIfNeeded())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ArticleTableContainer))

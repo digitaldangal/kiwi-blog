@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import CardList from '../components/CardList'
-import { fetchArticles } from '../actions'
+import { fetchArticlesIfNeeded } from '../actions'
 
 class CardListContainer extends Component {
   // fetch articles when Component is mounted
   componentDidMount() {
-    this.props.fetchArticles()
+    this.props.fetchArticlesIfNeeded()
   }
 
   render() {
@@ -20,7 +20,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  fetchArticles: () => dispatch(fetchArticles()),
+  fetchArticlesIfNeeded: () => dispatch(fetchArticlesIfNeeded()),
   //onRating: dispatch(),
 })
 

@@ -4,8 +4,7 @@ import MessageCard from './MessageCard'
 const LoadingCard = <MessageCard loading/>
 
 const CardList = (props) => {
-  // empty articles means browers is still fetching data
-  // so we display a loading card instead
+  // display a loading card if browser is still fetching data
   if (props.isFetching) {
     return LoadingCard
   }
