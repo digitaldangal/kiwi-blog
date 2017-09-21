@@ -4,11 +4,12 @@ import {
   Route
 } from 'react-router-dom'
 import { Layout, Breadcrumb } from 'antd'
-import BlogHeader from './components/BlogHeader'
-import About from './components/About'
-import Article from './components/Article'
-import ArticleTableContainer from './containers/ArticleTableContainer'
-import CardListContainer from './containers/CardListContainer'
+import BlogHeader from './BlogHeader'
+import About from './About'
+import Article from './Article'
+import Editor from './Editor'
+import ArticleTableContainer from '../containers/ArticleTableContainer'
+import CardListContainer from '../containers/CardListContainer'
 
 class App extends Component {
   render() {
@@ -26,6 +27,7 @@ class App extends Component {
             <Route exact path="/" component={CardListContainer}/>
             <Route path="/list" component={ArticleTableContainer}/>
             <Route path="/about" component={About}/>
+            <Route path="/user" component={Editor}/>
             <Route path="/articles/:id" component={Article}/>
           </Content>
           <Footer style={{ textAlign: 'center' }}>

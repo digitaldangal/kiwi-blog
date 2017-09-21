@@ -46,7 +46,7 @@ class ArticleTableContainer extends Component {
     const columns = [
       {
         title: 'Date',
-        dataIndex: 'date',
+        dataIndex: 'dateString',
         key: 'date',
         sorter: (a, b) => a.date - b.date,
         sortOrder: orderBy.columnKey === 'date' && orderBy.order,
@@ -81,8 +81,13 @@ class ArticleTableContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  data: filterArticles(state.articles.data, state.articles.keywords),
-  isFetching: state.articles.isFetching,
+  data: filterArticles(state.articles.data, state.articles.keywords).map(article => ({
+      ...article,
+      // we create a new field 'dataString' rather than overwrite
+      // 'date' field in order to sort date in a more precise way.
+      dateString: new Date(article.date).toLocaleDateString()
+  })),
+  isFetching: state.articles.isFetching
 })
 
 const mapDispatchToProps = dispatch => ({

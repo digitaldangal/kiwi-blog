@@ -1,5 +1,5 @@
 # kiwi-blog
-A blog implemented by React, Redux, Ant-design and Express.
+🥝 A blog implemented by React, Redux, Ant-design and Express.
 
 ## About
 
