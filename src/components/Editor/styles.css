@@ -1,0 +1,43 @@
+@import "./typography.css";
+@import "./elements.css";
+
+.container {
+  background-color: white;
+}
+
+.ory-cell-leaf {
+  padding: 8px;
+}
+
+.container {
+  background: white;
+  padding: 0 24px;
+}
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  align-items: stretch;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+.editable, #editable-static {
+  padding: 5px;
+}

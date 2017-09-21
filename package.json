@@ -4,15 +4,20 @@
   "private": true,
   "dependencies": {
     "antd": "^2.13.1",
+    "babel-polyfill": "^6.26.0",
+    "ory-editor": "^0.2.24",
+    "ory-editor-plugins-html5-video": "^0.2.24",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
+    "react-tap-event-plugin": "^2.0.1",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "slate": "^0.24.5",
     "slate-react": "^0.1.5",
-    "uuid": "^3.1.0"
+    "uuid": "^3.1.0",
+    "why-did-you-update": "^0.0.8"
   },
   "devDependencies": {
     "babel-plugin-import": "^1.4.0",

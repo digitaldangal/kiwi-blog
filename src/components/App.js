@@ -7,7 +7,7 @@ import { Layout, Breadcrumb } from 'antd'
 import BlogHeader from './BlogHeader'
 import About from './About'
 import Article from './Article'
-import Editor from './Editor'
+import ArticleEditor from './Editor/ArticleEditor'
 import ArticleTableContainer from '../containers/ArticleTableContainer'
 import CardListContainer from '../containers/CardListContainer'
 
@@ -18,7 +18,7 @@ class App extends Component {
       <Router>
         <Layout className='layout'>
           <BlogHeader/>
-          <Content style={{ padding: '0 50px', marginTop: '64px'}}>
+          <Content style={{ padding: '0 50px', marginTop: '64px' }}>
             <Breadcrumb style={{ margin: '12px 0' }}>
               <Breadcrumb.Item>Home</Breadcrumb.Item>
               <Breadcrumb.Item>List</Breadcrumb.Item>
@@ -27,7 +27,7 @@ class App extends Component {
             <Route exact path="/" component={CardListContainer}/>
             <Route path="/list" component={ArticleTableContainer}/>
             <Route path="/about" component={About}/>
-            <Route path="/user" component={Editor}/>
+            <Route path="/user" component={ArticleEditor}/>
             <Route path="/articles/:id" component={Article}/>
           </Content>
           <Footer style={{ textAlign: 'center' }}>
