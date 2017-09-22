@@ -6,8 +6,8 @@ import {
 import { Layout, Breadcrumb } from 'antd'
 import BlogHeader from './BlogHeader'
 import About from './About'
-import Article from './Article'
-import ArticleEditor from './Editor/ArticleEditor'
+import ArticleContainer from '../containers/ArticleContainer'
+import ArticleEditorContainer from '../containers/ArticleEditorContainer'
 import ArticleTableContainer from '../containers/ArticleTableContainer'
 import CardListContainer from '../containers/CardListContainer'
 
@@ -16,9 +16,9 @@ class App extends Component {
     const { Content, Footer } = Layout
     return (
       <Router>
-        <Layout className='layout'>
+        <Layout style={{ minHeight:'100vh' }}>
           <BlogHeader/>
-          <Content style={{ padding: '0 50px', marginTop: '64px' }}>
+          <Content style={{ padding: '0 50px', marginTop: 64 }}>
             <Breadcrumb style={{ margin: '12px 0' }}>
               <Breadcrumb.Item>Home</Breadcrumb.Item>
               <Breadcrumb.Item>List</Breadcrumb.Item>
@@ -27,8 +27,8 @@ class App extends Component {
             <Route exact path="/" component={CardListContainer}/>
             <Route path="/list" component={ArticleTableContainer}/>
             <Route path="/about" component={About}/>
-            <Route path="/user" component={ArticleEditor}/>
-            <Route path="/articles/:id" component={Article}/>
+            <Route path="/user" component={ArticleEditorContainer}/>
+            <Route path="/articles/:id" component={ArticleContainer}/>
           </Content>
           <Footer style={{ textAlign: 'center' }}>
             kiwi-blog ©2017 Created by kennylbj

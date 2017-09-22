@@ -31,26 +31,28 @@ export const fetchArticlesIfNeeded = () => (dispatch, getState) => {
   }
 }
 
-export const addArticleRequest = (article) => ({
-  type: types.ADD_ARTICLE_REQUEST,
+export const saveArticleRequest = (article) => ({
+  type: types.SAVE_ARTICLE_REQUEST,
   article
 })
 
-export const addArticleSuccess = () => ({
-  type: types.ADD_ARTICLE_SUCCESS
+export const saveArticleSuccess = (article) => ({
+  type: types.SAVE_ARTICLE_SUCCESS,
+  article
 })
 
-export const addArticleFailure = () => ({
-  type: types.ADD_ARTICLE_FAILURE
+export const saveArticleFailure = () => ({
+  type: types.SAVE_ARTICLE_FAILURE
 })
 
 // asyn add article
-export const addArticle = article => dispatch => {
-  dispatch(addArticleRequest(article))
-  return blog.addArticle(
+export const saveArticle = article => dispatch => {
+  dispatch(saveArticleRequest(article))
+  console.log('dispatch save', article)
+  return blog.saveArticle(
     article,
-    () => dispatch(addArticleSuccess()),
-    () => dispatch(addArticleFailure()))
+    () => dispatch(saveArticleSuccess(article)),
+    () => dispatch(saveArticleFailure()))
 }
 
 /*

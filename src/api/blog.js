@@ -1,6 +1,6 @@
 import articles from './data.js'
 
-const TIMEOUT = 1000
+const TIMEOUT = 2000
 
 export default {
   getArticles: (cb) => {
@@ -12,7 +12,7 @@ export default {
     setTimeout(() => cb(articles.data), TIMEOUT)
   },
 
-  addArticle: (article, success, failure) => {
+  saveArticle: (article, success, failure) => {
     /*
     fetch('')
       .then(response => response.json())

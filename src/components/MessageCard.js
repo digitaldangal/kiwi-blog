@@ -14,7 +14,7 @@ const MessageCard = ({id, title, tags, content, rate, loading, history}) => {
     loading={loading}
     style={{ width: "100%" }}
     onClick={() => {history.push('/articles/' + id)}}>
-    <div>{content}</div>
+    <div>content</div>
     <Rate allowHalf disabled defaultValue={rate} />
     </Card>)
 }

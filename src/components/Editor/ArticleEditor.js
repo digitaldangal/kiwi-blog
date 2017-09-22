@@ -38,8 +38,9 @@ import native from 'ory-editor-plugins-default-native'
 // The divider plugin
 import divider from 'ory-editor-plugins-divider'
 
-// Renders json state to html, can be used on server and client side
-import { HTMLRenderer } from 'ory-editor-renderer'
+import uuidv4 from 'uuid/v4'
+
+import { Button } from 'antd'
 
 // The content state
 import content from './content.js'
@@ -48,13 +49,8 @@ import './styles.css'
 // react-tap-event-plugin is required for material-ui which is used by ory-editor-ui
 require('react-tap-event-plugin')()
 
-if (process.env.NODE_ENV !== 'production' && process.env.REACT_APP_TRACE_UPDATES) {
-  const { whyDidYouUpdate } = require('why-did-you-update')
-  whyDidYouUpdate(React)
-}
-
 // Define which plugins we want to use (all of the above)
-const plugins = {
+export const plugins = {
   content: [slate(), spacer, image, video, divider, html5video],
   layout: [parallax({ defaultPlugin: slate() })],
 
@@ -63,14 +59,12 @@ const plugins = {
   native
 }
 
-let editable = content
-
 const editor = new Editor({
   plugins: plugins,
   // pass the content states
   editables: [
-    editable
-  ],
+    content[0]
+  ]
 })
 
 const Controls = () => <div>
@@ -79,27 +73,38 @@ const Controls = () => <div>
   <Toolbar editor={editor} />
 </div>
 
-const HtmlView = () => <div className="container">
-  <div className="editable editable-area">
-    <HTMLRenderer state={content[0]} plugins={plugins} />
-  </div>
-</div>
-
 const EditableArea = () => <div className="container">
   <div className="editable editable-area">
     <Editable
         editor={editor}
         id="1"
-        onChange={(state) => {console.log(state)}}
     />
   </div>
 </div>
 
-const ArticleEditor = () => {
+
+const ArticleEditor = (props) => {
   return <div>
-    <HtmlView/>
     <EditableArea/>
     <Controls/>
+    <div style={{ marginTop: 32, textAlign: 'center' }}>
+      <Button loading={props.isSaving} type="primary" onClick={() => {
+        const content = editor.query.editable('1')
+        const article = {
+          key: uuidv4(),
+          title: 'add title',
+          author: 'my',
+          date: Date.now(),
+          content,
+          traffic: 0,
+          rate: 0
+        }
+        props.onClick(article)
+        }}
+      >
+        Submit
+      </Button>
+    </div>
   </div>
 }
 
