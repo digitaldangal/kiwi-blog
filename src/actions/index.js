@@ -48,7 +48,6 @@ export const saveArticleFailure = () => ({
 // asyn add article
 export const saveArticle = article => dispatch => {
   dispatch(saveArticleRequest(article))
-  console.log('dispatch save', article)
   return blog.saveArticle(
     article,
     () => dispatch(saveArticleSuccess(article)),
@@ -74,10 +73,12 @@ export const search = keywords => ({
 
 // return true if and only if content contains all keywords
 const match = (content, keywords) => {
-  const lowerCaseContent = content.toLowerCase();
+  const jsonStr = JSON.stringify(content)
+  const lowerCaseContent = jsonStr.toLowerCase()
   return keywords.every(keyword => lowerCaseContent.includes(keyword.toLowerCase()))
 }
 
+// TODO: parse content and concate all 'text' to a string
 export const filterArticles = (articles, keywords) => {
   return articles.filter(article => 
     match(article.title, keywords) ||
@@ -85,3 +86,8 @@ export const filterArticles = (articles, keywords) => {
     match(article.author, keywords)
   )
 }
+
+export const readArticle = key => ({
+  type: types.READ_ARTICLE,
+  key
+})

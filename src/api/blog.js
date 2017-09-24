@@ -1,6 +1,6 @@
 import articles from './data.js'
 
-const TIMEOUT = 2000
+const TIMEOUT = 1000
 
 export default {
   getArticles: (cb) => {

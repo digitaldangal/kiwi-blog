@@ -1,10 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { readArticle } from '../actions'
 import { HTMLRenderer } from 'ory-editor-renderer'
 import { plugins } from '../components/Editor/ArticleEditor'
 import '../components/Editor/styles.css'
 
 class ArticleContainer extends Component {
+  componentWillMount() {
+    const { readArticle, article } = this.props
+    readArticle(article.key)
+  }
+
   render() {
     return <div className="container">
       <div className="editable editable-area">
@@ -20,5 +26,9 @@ const mapStateToProps = (state, ownProps) => {
     article: state.articles.data.find(article => article.key === id)
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  readArticle: (key) => dispatch(readArticle(key))
+})
   
-export default connect(mapStateToProps, null)(ArticleContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(ArticleContainer)

@@ -10,8 +10,8 @@ class ArticleEditorContainer extends Component {
   componentWillReceiveProps(nextProps) {
     // save succeed
     if (nextProps.data.length === this.props.data.length + 1) {
-      message.success('Save article success')
-      // jump
+      //message.success('Save article success')
+      // redirect to home
       this.props.history.push('/')
       
     }
@@ -20,6 +20,7 @@ class ArticleEditorContainer extends Component {
   handleSave = (article) => {
     this.props.saveArticle(article)
   }
+
   render() {
     return <ArticleEditor isSaving={this.props.isSaving} onClick={this.handleSave}/>
   }

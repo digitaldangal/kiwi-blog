@@ -4,14 +4,15 @@ import {
   SAVE_ARTICLE_REQUEST,
   SAVE_ARTICLE_SUCCESS,
   SAVE_ARTICLE_FAILURE,
-  SEARCH
+  SEARCH,
+  READ_ARTICLE
 } from '../constants/ActionTypes'
 
 const initialState = {
   data: [],
   isFetching: false,
   keywords: [],
-  isSaving: false,
+  isSaving: false
 }
 
 
@@ -38,10 +39,11 @@ export default function articles(state = initialState, action) {
         ...state,
         isSaving: true
       }
-    case SAVE_ARTICLE_SUCCESS: 
+    case SAVE_ARTICLE_SUCCESS:
+      // copy the article to the head of array
       const data = [
-        ...state.data,
-       action.article 
+       action.article,
+       ...state.data 
       ]
       return {
         ...state,
@@ -52,6 +54,19 @@ export default function articles(state = initialState, action) {
       return {
         ...state,
         isSaving: false
+      }
+    case READ_ARTICLE:
+      return {
+        ...state,
+        data: state.data.map(article => {
+          if (article.key === action.key) {
+            return {
+              ...article,
+              traffic: article.traffic + 1
+            }
+          }
+          return article
+        })
       }
     default:
       return state

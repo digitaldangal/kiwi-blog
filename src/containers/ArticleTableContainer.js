@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Table } from 'antd'
 import { fetchArticlesIfNeeded, filterArticles } from '../actions'
 
@@ -37,10 +37,6 @@ class ArticleTableContainer extends Component {
     this.setState({orderBy: sorter})
   }
 
-  handleRowClick = (record, index) => {
-    this.props.history.push('/articles/' + record.key)
-  }
-
   render() {
     let orderBy = this.state.orderBy
     const columns = [
@@ -56,6 +52,10 @@ class ArticleTableContainer extends Component {
         key: 'title',
         sorter: (a, b) => a.title.localeCompare(b.title),
         sortOrder: orderBy.columnKey === 'title' && orderBy.order,
+        render: (title, record) => {
+          const url = '/articles/' + record.key
+          return <Link to={url}>{title}</Link>
+        }
       }, {
         title: 'Author',
         dataIndex: 'author',
@@ -75,7 +75,7 @@ class ArticleTableContainer extends Component {
       loading={this.props.isFetching} 
       dataSource={this.props.data}
       onChange={this.handleChange}
-      onRowClick={this.handleRowClick}/>
+      />
   }
 
 }
@@ -94,4 +94,4 @@ const mapDispatchToProps = dispatch => ({
   fetchArticlesIfNeeded: () => dispatch(fetchArticlesIfNeeded())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ArticleTableContainer))
+export default connect(mapStateToProps, mapDispatchToProps)(ArticleTableContainer)
