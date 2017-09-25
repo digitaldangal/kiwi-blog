@@ -23,6 +23,9 @@ export const REQUEST_ARTICLES = 'REQUEST_ARTICLES'
 export const RECEIVE_ARTICLES = 'RECEIVE_ARTICLES'
 
 export const READ_ARTICLE = 'READ_ARTICLE'
-export const RATING = 'RATING'
 export const COMMENT = 'COMMENT'
 export const SEARCH = 'SEARCH'
+
+export const RATING_REQUEST = 'RATING_REQUEST'
+export const RATING_SUCCESS = 'RATING_SUCCESS'
+export const RATING_FAILURE = 'RATING_FAILURE'

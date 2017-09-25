@@ -102,7 +102,10 @@ class Saver extends Component {
           date: Date.now(),
           content,
           traffic: 0,
-          rate: 0
+          rate: {
+            num: 0,
+            sum: 0
+          }
         }
         this.props.onClick(article)
       }

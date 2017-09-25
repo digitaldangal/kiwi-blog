@@ -26,5 +26,18 @@ export default {
       .catch(e => failure())
     */
     setTimeout(() => success(), TIMEOUT)
+  },
+
+  rating: (key, rate, success, failure) => {
+    /*
+    fetch('').then(response => response.json())
+      .then(json => {
+        if (json.success) {
+          success()
+        } else {
+          failure()
+        }
+      }).catch(e => failure)*/
+      setTimeout(() => success(), TIMEOUT)
   }
 }

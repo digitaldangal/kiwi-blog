@@ -5,7 +5,10 @@ import {
   SAVE_ARTICLE_SUCCESS,
   SAVE_ARTICLE_FAILURE,
   SEARCH,
-  READ_ARTICLE
+  READ_ARTICLE,
+  RATING_REQUEST,
+  RATING_SUCCESS,
+  RATING_FAILURE
 } from '../constants/ActionTypes'
 
 const initialState = {
@@ -63,6 +66,55 @@ export default function articles(state = initialState, action) {
             return {
               ...article,
               traffic: article.traffic + 1
+            }
+          }
+          return article
+        })
+      }
+    case RATING_REQUEST:
+      return {
+        ...state,
+        data: state.data.map(article => {
+          if (article.key === action.key) {
+            return {
+              ...article,
+              rate: {
+                ...article.rate,
+                isRating: true
+              }
+            }
+          }
+          return article
+        })
+      }
+    case RATING_SUCCESS:
+      return {
+        ...state,
+        data: state.data.map(article => {
+          if (article.key === action.key) {
+            return {
+              ...article,
+              rate: {
+                num: article.rate.num + 1,
+                sum: article.rate.sum + action.rate,
+                isRating: false
+              }
+            }
+          }
+          return article
+        })
+      }
+      case RATING_FAILURE:
+      return {
+        ...state,
+        data: state.data.map(article => {
+          if (article.key === action.key) {
+            return {
+              ...article,
+              rate: {
+                ...article.rate,
+                isRating: false
+              }
             }
           }
           return article

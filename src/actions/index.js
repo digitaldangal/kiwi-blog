@@ -91,3 +91,27 @@ export const readArticle = key => ({
   type: types.READ_ARTICLE,
   key
 })
+
+const ratingRequest = key => ({
+  type: types.RATING_REQUEST,
+  key
+})
+
+const ratingSuccess = (key, rate) => ({
+  type: types.RATING_SUCCESS,
+  key,
+  rate
+})
+
+const ratingFailure = (key) => ({
+  type: types.RATING_FAILURE,
+  key
+})
+
+export const rating = (key, rate) => dispatch => {
+  dispatch(ratingRequest(key, rate))
+  return blog.rating(key,
+    rate,
+    () => dispatch(ratingSuccess(key, rate)),
+    () => dispatch(ratingFailure(key)))
+}

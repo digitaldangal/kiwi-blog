@@ -1,10 +1,11 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import { Card, Rate, Tag } from 'antd'
+import { Card, Tag } from 'antd'
 import { HTMLRenderer } from 'ory-editor-renderer'
-import { plugins } from '../components/Editor/ArticleEditor'
-import '../components/Editor/styles.css'
+import { plugins } from './Editor/ArticleEditor'
+import './Editor/styles.css'
+import Rater from '../containers/Rater'
+
 // TODO 
 const HtmlView = content => {
   return <div className="editable editable-area">
@@ -25,15 +26,9 @@ const MessageCard = ({id, title, tags, content, rate, loading}) => {
     style={{ width: '100%' }}>
       <HtmlView content={content}/>
       <div style={{ textAlign: 'center' }}>
-        <Rate allowHalf defaultValue={rate} />
+        <Rater id={id}/>
       </div>
     </Card>
-}
-
-MessageCard.propTypes = {
-  title: PropTypes.string,
-  tags: PropTypes.array,
-  rate: PropTypes.number
 }
 
 export default MessageCard
