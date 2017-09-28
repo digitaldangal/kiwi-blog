@@ -11,8 +11,8 @@ class Rater extends Component {
     dispatch(rating(id, value))
   }
 
-  // return proper value for Rate component
-  // eg. [4.2 -> 4], [4.5 -> 4.5], [4.7 -> 4.5], [5.0 -> 5.0]
+  // Returns a suitable value for Rate component
+  // E.g. [4.2 -> 4], [4.5 -> 4.5], [4.7 -> 4.5], [5.0 -> 5.0]
   getRate = value => {
     const floor = Math.floor(value)
     if (value - floor >= 0.5) {

@@ -5,6 +5,7 @@ import {
   SAVE_ARTICLE_SUCCESS,
   SAVE_ARTICLE_FAILURE,
   SEARCH,
+  SEARCH_TAG,
   READ_ARTICLE,
   RATING_REQUEST,
   RATING_SUCCESS,
@@ -15,6 +16,7 @@ const initialState = {
   data: [],
   isFetching: false,
   keywords: [],
+  tagFilter: '',
   isSaving: false
 }
 
@@ -36,6 +38,11 @@ export default function articles(state = initialState, action) {
       return {
         ...state,
         keywords: action.keywords
+      }
+    case SEARCH_TAG:
+      return {
+        ...state,
+        tagFilter: action.tag
       }
     case SAVE_ARTICLE_REQUEST:
       return {
@@ -104,7 +111,7 @@ export default function articles(state = initialState, action) {
           return article
         })
       }
-      case RATING_FAILURE:
+    case RATING_FAILURE:
       return {
         ...state,
         data: state.data.map(article => {

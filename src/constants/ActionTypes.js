@@ -24,7 +24,9 @@ export const RECEIVE_ARTICLES = 'RECEIVE_ARTICLES'
 
 export const READ_ARTICLE = 'READ_ARTICLE'
 export const COMMENT = 'COMMENT'
+
 export const SEARCH = 'SEARCH'
+export const SEARCH_TAG = 'SEARCH_TAG'
 
 export const RATING_REQUEST = 'RATING_REQUEST'
 export const RATING_SUCCESS = 'RATING_SUCCESS'

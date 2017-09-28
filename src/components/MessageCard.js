@@ -13,10 +13,13 @@ const HtmlView = content => {
     </div>
 }
 
-const MessageCard = ({id, title, tags, content, rate, loading}) => {
+const MessageCard = ({id, title, tags, content, rate, loading, searchTag}) => {
   let tgs
   if (tags !== undefined) {
-    tgs = tags.map(tag => <Tag key={tag}>{tag}</Tag>)
+    tgs = tags.map(tag => <Tag key={tag} onClick={() => {
+      console.log(tag)
+      searchTag(tag)
+    }}>{tag}</Tag>)
   }
   const url = '/articles/' + id
   return <Card

@@ -71,6 +71,11 @@ export const search = keywords => ({
   keywords
 })
 
+export const searchTag = tag => ({
+  type: types.SEARCH_TAG,
+  tag
+})
+
 // return true if and only if content contains all keywords
 const match = (content, keywords) => {
   const jsonStr = JSON.stringify(content)
@@ -78,12 +83,17 @@ const match = (content, keywords) => {
   return keywords.every(keyword => lowerCaseContent.includes(keyword.toLowerCase()))
 }
 
+const matchTag = (tags, tag) => {
+  return tag === '' || tag === undefined || tags.some(t => t === tag)
+}
+
 // TODO: parse content and concate all 'text' to a string
-export const filterArticles = (articles, keywords) => {
+export const filterArticles = (articles, keywords, tag) => {
   return articles.filter(article => 
+    matchTag(article.tags, tag) && (
     match(article.title, keywords) ||
     match(article.content, keywords) ||
-    match(article.author, keywords)
+    match(article.author, keywords))
   )
 }
 

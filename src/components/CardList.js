@@ -18,6 +18,7 @@ const CardList = (props) => {
       content={msg.content}
       rate={msg.rate}
       loading={props.loading}
+      searchTag={props.searchTag}
     />
     <br/>
     </div>

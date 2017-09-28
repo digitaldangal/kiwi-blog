@@ -37,7 +37,9 @@ class ArticleTags extends Component {
     // update Form field
     // @see https://ant.design/components/form-cn/#components-form-demo-customized-form-controls
     const onChange = this.props.onChange
-    onChange(tags)
+    if (onChange) {
+      onChange(tags)
+    }
   }
 
   saveInputRef = input => this.input = input
