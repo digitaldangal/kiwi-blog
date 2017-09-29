@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { Component }  from 'react'
 
 // The editor core
-import Editor, { Editable } from 'ory-editor-core'
+import Editor, { Editable, createEmptyState } from 'ory-editor-core'
 import 'ory-editor-core/lib/index.css' 
 
 // The default ui components
@@ -69,21 +69,34 @@ const Controls = () => <div>
   <Toolbar editor={editor} />
 </div>
 
-const EditableArea = () => <div className="container">
+const EditableArea = (props) => <div className="container">
   <div className="editable editable-area">
     <Editable
         editor={editor}
         id={content[0].id}
+        // Update state each time editor changed
+        // Does this solution cause performance issue?
+        onChange={state => props.onChange(state)}
     />
   </div>
 </div>
 
-const ArticleEditor = (props) => {
-  return <div>
-    <EditableArea/>
-    <Controls/>
-    <ArticleSaver onClick={props.onClick} isSaving={props.isSaving} content={editor.query.editable(content[0].id)}/>
-  </div>
+class ArticleEditor extends Component {
+  state = {
+    data: createEmptyState()
+  }
+
+  handleChange = state => {
+    this.setState({data: state})
+  }
+
+  render() {
+    return <div>
+      <EditableArea onChange={this.handleChange}/>
+      <Controls/>
+      <ArticleSaver onClick={this.props.onClick} isSaving={this.props.isSaving} content={this.state.data}/>
+    </div>
+  }
 }
 
 export default ArticleEditor

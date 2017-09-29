@@ -7,7 +7,7 @@ class ArticleTags extends Component {
     tags: [],
     inputVisible: false,
     inputValue: '',
-  };
+  }
 
   handleClose = (removedTag) => {
     const tags = this.state.tags.filter(tag => tag !== removedTag)

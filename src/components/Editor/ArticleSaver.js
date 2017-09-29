@@ -15,7 +15,6 @@ class Saver extends Component {
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('saver:', this.props.content)
         const article = {
           key: uuidv4(),
           title: values.articleTitle,
