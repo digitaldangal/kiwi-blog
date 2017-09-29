@@ -15,12 +15,13 @@ class Saver extends Component {
     e.preventDefault()
     this.props.form.validateFields((err, values) => {
       if (!err) {
+        console.log('saver:', this.props.content)
         const article = {
           key: uuidv4(),
           title: values.articleTitle,
           author: values.author,
           date: Date.now(),
-          tags: values.tags,
+          tags: values.tags || [],
           content: this.props.content,
           traffic: 0,
           rate: {

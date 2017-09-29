@@ -22,7 +22,10 @@ class SearchContainer extends Component {
         placeholder='input search text'
         style={{ width: 150 }}
         onSearch={this.handleSearch}/>
-      { tag !== '' && <span> <span>' '</span> <Tag closable onClose={this.handleClose}>{tag}</Tag> </span> }
+      { tag !== '' && <span> 
+        <span style={{display: 'inline-block', width: '12px'}}></span>
+        <Tag closable onClose={this.handleClose}>{tag}</Tag>
+      </span> }
     </span>
   }
 }

@@ -81,7 +81,8 @@ class ArticleTableContainer extends Component {
 }
 
 const mapStateToProps = state => ({
-  data: filterArticles(state.articles.data, state.articles.keywords).map(article => ({
+  data: filterArticles(state.articles.data, state.articles.keywords, state.articles.tagFilter)
+    .map(article => ({
       ...article,
       // we create a new field 'dataString' rather than overwrite
       // 'date' field in order to sort date in a more precise way.

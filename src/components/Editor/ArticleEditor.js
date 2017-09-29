@@ -73,7 +73,7 @@ const EditableArea = () => <div className="container">
   <div className="editable editable-area">
     <Editable
         editor={editor}
-        id="1"
+        id={content[0].id}
     />
   </div>
 </div>
@@ -82,7 +82,7 @@ const ArticleEditor = (props) => {
   return <div>
     <EditableArea/>
     <Controls/>
-    <ArticleSaver onClick={props.onClick} isSaving={props.isSaving} content={editor.query.editable('1')}/>
+    <ArticleSaver onClick={props.onClick} isSaving={props.isSaving} content={editor.query.editable(content[0].id)}/>
   </div>
 }
 
