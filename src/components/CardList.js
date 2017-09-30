@@ -9,21 +9,15 @@ const CardList = (props) => {
     return LoadingCard
   }
   let data = props.data || {}
-  const cards = data.map(msg => {
-    const cardsWithSpace = <div key={msg.key}>
-    <MessageCard
-      id={msg.key}
-      title={msg.title}
-      tags={msg.tags}
-      content={msg.content}
-      rate={msg.rate}
-      loading={props.loading}
-      searchTag={props.searchTag}
-    />
-    <br/>
-    </div>
-    return cardsWithSpace })
-  return (<div>{cards}</div>)
+  const cards = data.map(msg => <MessageCard key={msg.key}
+    id={msg.key}
+    title={msg.title}
+    tags={msg.tags}
+    content={msg.content}
+    rate={msg.rate}
+    loading={props.loading}
+    searchTag={props.searchTag}/>)
+  return <div>{cards}</div>
 }
 
 export default CardList

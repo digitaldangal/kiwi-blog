@@ -22,11 +22,11 @@ const MessageCard = ({id, title, tags, content, rate, loading, searchTag}) => {
     }}>{tag}</Tag>)
   }
   const url = '/articles/' + id
-  return <Card
-    title={<Link to={url}>{title}</Link>}
+  return <Card 
+    title={<Link to={url} style={{ color: 'black' }}>{title}</Link>}
     extra={tgs}
     loading={loading}
-    style={{ width: '100%' }}>
+    style={{ width: '100%', marginBottom: '24'}}>
       <HtmlView content={content}/>
       <div style={{ textAlign: 'center' }}>
         <Rater id={id}/>

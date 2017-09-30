@@ -5,11 +5,11 @@ import {
 } from 'react-router-dom'
 import { Layout, Breadcrumb } from 'antd'
 import BlogHeader from './BlogHeader'
-import About from './About'
 import ArticleContainer from '../containers/ArticleContainer'
 import ArticleEditorContainer from '../containers/ArticleEditorContainer'
 import ArticleTableContainer from '../containers/ArticleTableContainer'
 import CardListContainer from '../containers/CardListContainer'
+import Dashboard from './Dashboard/Dashboard'
 
 class App extends Component {
   render() {
@@ -26,7 +26,7 @@ class App extends Component {
             </Breadcrumb>
             <Route exact path="/" component={CardListContainer}/>
             <Route path="/list" component={ArticleTableContainer}/>
-            <Route path="/about" component={About}/>
+            <Route path="/about" component={Dashboard}/>
             <Route path="/user" component={ArticleEditorContainer}/>
             <Route path="/articles/:id" component={ArticleContainer}/>
           </Content>
