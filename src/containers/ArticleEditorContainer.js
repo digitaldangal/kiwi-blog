@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 //import { message } from 'antd'
 import ArticleEditor from '../components/Editor/ArticleEditor'
-import { saveArticle } from '../actions'
+import { saveArticle } from '../actions/articles'
 
 class ArticleEditorContainer extends Component {
 

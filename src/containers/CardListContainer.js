@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import CardList from '../components/CardList'
-import { fetchArticlesIfNeeded, filterArticles, searchTag } from '../actions'
+import { fetchArticlesIfNeeded, filterArticles, searchTag } from '../actions/articles'
 
 class CardListContainer extends Component {
   // fetch articles when Component is mounted

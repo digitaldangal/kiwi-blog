@@ -54,18 +54,6 @@ export const saveArticle = article => dispatch => {
     () => dispatch(saveArticleFailure()))
 }
 
-/*
-export const deleteArticle = (id) => ({
-  type: types.DELETE_ARTICLE,
-  id
-})
-
-export const editArticle = (id, article) => ({
-  type: types.EDIT_ARTICLE,
-  id,
-  article
-})*/
-
 export const search = keywords => ({
   type: types.SEARCH,
   keywords

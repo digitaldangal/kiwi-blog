@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Rate, Spin } from 'antd'
-import { rating } from '../actions'
+import { rating } from '../actions/articles'
 
 class Rater extends Component {
 

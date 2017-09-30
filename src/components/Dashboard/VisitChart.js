@@ -16,7 +16,7 @@ const VisitChart = ({ data }) => {
     <div>
       <div style={{marginLeft: '32px', marginBottom: '32px', fontSize: '16px'}}>Visit History</div>
       <ResponsiveContainer minHeight={360}>
-        <LineChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+        <LineChart data={data}>
           <Line type="monotone" dataKey="uv" stroke={color.purple} />
           <Line type="monotone" dataKey="pv" stroke={color.blue} />
           <CartesianGrid vertical={false} stroke={color.borderBase} strokeDasharray="3 3" />

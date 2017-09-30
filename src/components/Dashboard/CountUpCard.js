@@ -2,9 +2,10 @@ import React from 'react'
 import { Icon, Card } from 'antd'
 import CountUp from 'react-countup'
 
-const CountUpCard = ({ icon, title, number, color }) => {
+const CountUpCard = ({ icon, title, number, color, handleClick }) => {
   return (
-    <Card style={{padding: '32px', marginBottom: '24px', cursor: 'pointer'}} bordered={false} bodyStyle={{ padding: 0 }}>
+    <Card style={{padding: '32px', marginBottom: '24px', cursor: 'pointer'}}
+     bordered={false} bodyStyle={{ padding: 0 }} onClick={handleClick}>
       <Icon style={{fontSize: '54px', float: 'left', color: color}} type={icon} />
       <div style={{width: '100%', paddingLeft: '78px'}}>
         <p style={{lineHeight: '16px', fontSize: '16px', marginBottom: '8px', height: '16px'}}>{title}</p>

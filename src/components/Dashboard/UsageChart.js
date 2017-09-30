@@ -7,7 +7,7 @@ const UsageChart = ({ data }) => {
     <div >
       <div style={{marginLeft: '32px', marginBottom: '32px', fontSize: '16px'}}>CPU / Memory Usage</div>
       <ResponsiveContainer minHeight={360}>
-        <AreaChart data={data} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+        <AreaChart data={data} >
           <XAxis dataKey="name" axisLine={{ stroke: color.borderBase, strokeWidth: 1 }} tickLine={false} />
           <YAxis axisLine={false} tickLine={false} />
           <CartesianGrid vertical={false} stroke={color.borderBase} strokeDasharray="3 3" />

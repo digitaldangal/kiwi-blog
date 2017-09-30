@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Table } from 'antd'
-import { fetchArticlesIfNeeded, filterArticles } from '../actions'
+import { fetchArticlesIfNeeded, filterArticles } from '../actions/articles'
 
 /**
  * We use react's state manager instead of redux here
@@ -20,11 +20,11 @@ import { fetchArticlesIfNeeded, filterArticles } from '../actions'
  * What's more, we exclude 'orderBy' from state because this
  * state only affect this table view.
  * In general, 'orderBy' function can be self-contained, so it's
- * alright for ‘ArticleTableContainer’ to just use state manager
+ * alright for ‘ArticleTable’ to just use state manager
  * of react directly.
  */
 
-class ArticleTableContainer extends Component {
+class ArticleTable extends Component {
   state = {
     orderBy: {}
   }
@@ -95,4 +95,4 @@ const mapDispatchToProps = dispatch => ({
   fetchArticlesIfNeeded: () => dispatch(fetchArticlesIfNeeded())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(ArticleTableContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(ArticleTable)

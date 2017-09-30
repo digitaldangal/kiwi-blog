@@ -26,7 +26,7 @@ const MessageCard = ({id, title, tags, content, rate, loading, searchTag}) => {
     title={<Link to={url} style={{ color: 'black' }}>{title}</Link>}
     extra={tgs}
     loading={loading}
-    style={{ width: '100%', marginBottom: '24'}}>
+    style={{ width: '100%', marginBottom: '24px'}}>
       <HtmlView content={content}/>
       <div style={{ textAlign: 'center' }}>
         <Rater id={id}/>

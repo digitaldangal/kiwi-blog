@@ -5,11 +5,11 @@ import {
 } from 'react-router-dom'
 import { Layout, Breadcrumb } from 'antd'
 import BlogHeader from './BlogHeader'
-import ArticleContainer from '../containers/ArticleContainer'
+import Article from '../containers/Article'
 import ArticleEditorContainer from '../containers/ArticleEditorContainer'
-import ArticleTableContainer from '../containers/ArticleTableContainer'
+import ArticleTable from '../containers/ArticleTable'
 import CardListContainer from '../containers/CardListContainer'
-import Dashboard from './Dashboard/Dashboard'
+import Dashboard from '../containers/Dashboard'
 
 class App extends Component {
   render() {
@@ -25,10 +25,10 @@ class App extends Component {
               <Breadcrumb.Item>App</Breadcrumb.Item>
             </Breadcrumb>
             <Route exact path="/" component={CardListContainer}/>
-            <Route path="/list" component={ArticleTableContainer}/>
+            <Route path="/list" component={ArticleTable}/>
             <Route path="/about" component={Dashboard}/>
             <Route path="/user" component={ArticleEditorContainer}/>
-            <Route path="/articles/:id" component={ArticleContainer}/>
+            <Route path="/articles/:id" component={Article}/>
           </Content>
           <Footer style={{ textAlign: 'center' }}>
             kiwi-blog ©2017 Created by kennylbj

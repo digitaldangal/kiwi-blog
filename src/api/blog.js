@@ -1,4 +1,4 @@
-import articles from './data.js'
+import { articles, dashboard } from './data.js'
 
 const TIMEOUT = 1000
 
@@ -39,5 +39,9 @@ export default {
         }
       }).catch(e => failure)*/
       setTimeout(() => success(), TIMEOUT)
+  },
+
+  fetchDashboard: (cb) => {
+    setTimeout(() => cb(dashboard), TIMEOUT)
   }
 }

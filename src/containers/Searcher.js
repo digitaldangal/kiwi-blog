@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Input, Tag } from 'antd'
-import { search, searchTag } from '../actions'
+import { search, searchTag } from '../actions/articles'
 
 const Search = Input.Search
 
-class SearchContainer extends Component {
+class Searcher extends Component {
   handleSearch = (value) => {
     const keywords = value.split(' ')
     this.props.search(keywords)
@@ -39,4 +39,4 @@ const mapDispatchToProps = dispatch => ({
   closeTag: (tag) => dispatch(searchTag(tag))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(Searcher)
