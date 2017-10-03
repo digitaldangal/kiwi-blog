@@ -1,38 +1,43 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-//import { message } from 'antd'
+import { message } from 'antd'
 import ArticleEditor from '../components/Editor/ArticleEditor'
-import { saveArticle } from '../actions/articles'
+import { createArticleAsyn, updateArticleAsyn } from '../actions/articles'
+import content from '../components/Editor/content.js'
 
 class ArticleEditorContainer extends Component {
 
-  componentWillReceiveProps(nextProps) {
-    // save succeed
-    if (nextProps.data.length === this.props.data.length + 1) {
-      //message.success('Save article success')
-      // redirect to home
-      this.props.history.push('/')
-      
+  componentDidUpdate() {
+    const { isSuccess, history } = this.props
+    if (isSuccess) {
+      history.push('/')
+      message.success('Operation success')
     }
   }
 
-  handleSave = (article) => {
-    this.props.saveArticle(article)
+  handleCreate = (article) => {
+    this.props.dispatch(createArticleAsyn(article))
+  }
+
+  handleUpdate = (article) => {
+    this.props.dispatch(updateArticleAsyn(article))
   }
 
   render() {
-    return <ArticleEditor isSaving={this.props.isSaving} onClick={this.handleSave}/>
+    const isCreate = this.props.article === undefined
+    const article = isCreate ? { content: content[0] } : this.props.article
+    return <ArticleEditor isOperating={this.props.isOperating} onCreate={this.handleCreate}
+      onUpdate={this.handleUpdate} article={article} isCreate={isCreate}/>
   }
 }
 
-const mapStateToProps = state => ({
-  isSaving: state.articles.isSaving,
-  data: state.articles.data
-})
+const mapStateToProps = state => {
+  return {
+    isOperating: state.articles.isOperating,
+    isSuccess: state.articles.isSuccess,
+    article: state.articles.data.find(article => article.key === state.articles.editingKey)
+  }
+}
 
-const mapDispatchToProps = dispatch => ({
-  saveArticle: (article) => dispatch(saveArticle(article))
-})
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ArticleEditorContainer))
+export default withRouter(connect(mapStateToProps, null)(ArticleEditorContainer))

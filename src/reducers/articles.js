@@ -1,9 +1,16 @@
 import {
   REQUEST_ARTICLES, 
   RECEIVE_ARTICLES,
-  SAVE_ARTICLE_REQUEST,
-  SAVE_ARTICLE_SUCCESS,
-  SAVE_ARTICLE_FAILURE,
+  CREATE_ARTICLE_REQUEST,
+  CREATE_ARTICLE_SUCCESS,
+  CREATE_ARTICLE_FAILURE,
+  UPDATE_ARTICLE,
+  UPDATE_ARTICLE_REQUEST,
+  UPDATE_ARTICLE_SUCCESS,
+  UPDATE_ARTICLE_FAILURE,
+  DELETE_ARTICLE_REQUEST,
+  DELETE_ARTICLE_SUCCESS,
+  DELETE_ARTICLE_FAILURE,
   SEARCH,
   SEARCH_TAG,
   READ_ARTICLE,
@@ -16,8 +23,8 @@ const initialState = {
   data: [],
   isFetching: false,
   keywords: [],
-  tagFilter: '',
-  isSaving: false
+  isOperating: false, // Creating, Updating or Deleting
+  isSuccess: false // Indicate whether the operation is success
 }
 
 
@@ -44,12 +51,13 @@ export default function articles(state = initialState, action) {
         ...state,
         tagFilter: action.tag
       }
-    case SAVE_ARTICLE_REQUEST:
+    case CREATE_ARTICLE_REQUEST:
       return {
         ...state,
-        isSaving: true
+        isOperating: true,
+        isSuccess: false
       }
-    case SAVE_ARTICLE_SUCCESS:
+    case CREATE_ARTICLE_SUCCESS:
       // copy the article to the head of array
       const data = [
        action.article,
@@ -57,13 +65,67 @@ export default function articles(state = initialState, action) {
       ]
       return {
         ...state,
-        isSaving: false,
+        isOperating: false,
+        isSuccess: true,
+        editingKey: undefined,
         data
       }
-    case SAVE_ARTICLE_FAILURE:
+    case CREATE_ARTICLE_FAILURE:
       return {
         ...state,
-        isSaving: false
+        isOperating: false,
+        isSuccess: false,
+        editingKey: undefined
+      }
+    case UPDATE_ARTICLE:
+      return {
+        ...state,
+        editingKey: action.key
+      }
+    case UPDATE_ARTICLE_REQUEST:
+      return {
+        ...state,
+        isOperating: true,
+        isSuccess: false
+      }
+    case UPDATE_ARTICLE_SUCCESS:
+      return {
+        ...state,
+        isOperating: false,
+        isSuccess: true,
+        editingKey: undefined,
+        data: state.data.map(article => {
+          if (article.key === action.article.key) {
+            return action.article
+          }
+          return article
+        })
+      }
+    case UPDATE_ARTICLE_FAILURE:
+      return {
+        ...state,
+        isOperating: false,
+        isSuccess: false,
+        editingKey: undefined
+      }
+    case DELETE_ARTICLE_REQUEST:
+      return {
+        ...state,
+        isOperating: true,
+        isSuccess: false
+      }
+    case DELETE_ARTICLE_SUCCESS:
+      return {
+        ...state,
+        isOperating: false,
+        isSuccess: true,
+        data: state.data.filter(article => article.key !== action.key)
+      }
+    case DELETE_ARTICLE_FAILURE:
+      return {
+        ...state,
+        isOperating: true,
+        isSuccess: false
       }
     case READ_ARTICLE:
       return {

@@ -11,25 +11,44 @@ class Saver extends Component {
     this.props.form.validateFields()
   }
 
+  handleCreate = (values, content, onCreate) => {
+    const article = {
+      key: uuidv4(),
+      title: values.articleTitle,
+      author: values.author,
+      date: Date.now(),
+      tags: values.tags || [],
+      content: content,
+      traffic: 0,
+      rate: {
+        num: 0,
+        sum: 0,
+        isRating: false
+      }
+    }
+    onCreate(article)
+  }
+
+  handleUpdate = (values, article, onUpdate) => {
+    const updatedArticle = {
+      ...article,
+      title: values.articleTitle,
+      author: values.author,
+      tags: values.tags
+    }
+    onUpdate(updatedArticle)
+  }
+
   handleSubmit = e => {
     e.preventDefault()
-    this.props.form.validateFields((err, values) => {
+    const { form, article, onCreate, onUpdate, isCreate } = this.props
+    form.validateFields((err, values) => {
       if (!err) {
-        const article = {
-          key: uuidv4(),
-          title: values.articleTitle,
-          author: values.author,
-          date: Date.now(),
-          tags: values.tags || [],
-          content: this.props.content,
-          traffic: 0,
-          rate: {
-            num: 0,
-            sum: 0,
-            isRating: false
-          }
+        if (isCreate) {
+          this.handleCreate(values, article.content, onCreate)
+        } else {
+          this.handleUpdate(values, article, onUpdate)
         }
-        this.props.onClick(article)
       }
     })
   }
@@ -40,6 +59,8 @@ class Saver extends Component {
 
   render() {
     const { getFieldDecorator, getFieldsError, getFieldError, isFieldTouched } = this.props.form
+    const { isOperating, isCreate } = this.props
+    const { title, author, tags } = this.props.article
     // Only show error after a field is touched.
     const articleTitleError = isFieldTouched('articleTitle') && getFieldError('articleTitle')
     const authorError = isFieldTouched('author') && getFieldError('author')
@@ -52,6 +73,7 @@ class Saver extends Component {
         >
           {getFieldDecorator('articleTitle', {
             rules: [{ required: true, message: 'Please input article title' }],
+            initialValue: title
           })(
             <Input prefix={<Icon type='book'/>} placeholder="Article title" />
           )}
@@ -62,21 +84,22 @@ class Saver extends Component {
         >
           {getFieldDecorator('author', {
             rules: [{ required: true, message: 'Please input author' }],
+            initialValue: author
           })(
-            <Input prefix={<Icon type='user'/>} placeholder="Author" />
+            <Input prefix={<Icon type='user'/>} placeholder="Author"  />
           )}
         </FormItem>
         <FormItem>
-          {getFieldDecorator('tags', {valuePropName: 'tags'})(<ArticleTags/>)}
+          {getFieldDecorator('tags', {valuePropName: 'tags', initialValue: tags})(<ArticleTags />)}
         </FormItem>
         <FormItem>
           <Button
             type='primary'
             htmlType='submit'
-            loading={this.props.isSaving}
+            loading={isOperating}
             disabled={this.hasErrors(getFieldsError())}
           >
-            Submit
+            { isCreate ? 'Create' : 'Update' }
           </Button>
         </FormItem>
       </Form>)

@@ -31,27 +31,79 @@ export const fetchArticlesIfNeeded = () => (dispatch, getState) => {
   }
 }
 
-export const saveArticleRequest = (article) => ({
-  type: types.SAVE_ARTICLE_REQUEST,
+const createArticleRequest = (article) => ({
+  type: types.CREATE_ARTICLE_REQUEST,
   article
 })
 
-export const saveArticleSuccess = (article) => ({
-  type: types.SAVE_ARTICLE_SUCCESS,
+const createArticleSuccess = (article) => ({
+  type: types.CREATE_ARTICLE_SUCCESS,
   article
 })
 
-export const saveArticleFailure = () => ({
-  type: types.SAVE_ARTICLE_FAILURE
+const createArticleFailure = () => ({
+  type: types.CREATE_ARTICLE_FAILURE
 })
 
-// asyn add article
-export const saveArticle = article => dispatch => {
-  dispatch(saveArticleRequest(article))
-  return blog.saveArticle(
+// asyn create article
+export const createArticleAsyn = article => dispatch => {
+  dispatch(createArticleRequest(article))
+  return blog.createArticle(
     article,
-    () => dispatch(saveArticleSuccess(article)),
-    () => dispatch(saveArticleFailure()))
+    () => dispatch(createArticleSuccess(article)),
+    () => dispatch(createArticleFailure()))
+}
+
+export const updateArticle = (key) => ({
+  type: types.UPDATE_ARTICLE,
+  key
+})
+
+const updateArticleRequest = (article) => ({
+  type: types.UPDATE_ARTICLE_REQUEST,
+  article
+})
+
+const updateArticleSuccess = (article) => ({
+  type: types.UPDATE_ARTICLE_SUCCESS,
+  article
+})
+
+const updateArticleFailure = () => ({
+  type: types.UPDATE_ARTICLE_FAILURE
+})
+
+// asyn update article
+export const updateArticleAsyn = article => dispatch => {
+  dispatch(updateArticleRequest(article))
+  return blog.updateArticle(
+    article,
+    () => dispatch(updateArticleSuccess(article)),
+    () => dispatch(updateArticleFailure()))
+}
+
+const deleteArticleRequest = (key) => ({
+  type: types.DELETE_ARTICLE_REQUEST,
+  key
+})
+
+const deleteArticleSuccess = (key) => ({
+  type: types.DELETE_ARTICLE_SUCCESS,
+  key
+})
+
+const deleteArticleFailure = (key) => ({
+  type: types.DELETE_ARTICLE_FAILURE,
+  key
+})
+
+// asyn delete article
+export const deleteArticleAsyn = key => dispatch => {
+  dispatch(deleteArticleRequest(key))
+  return blog.deleteArticle(
+    key,
+    () => dispatch(deleteArticleSuccess(key)),
+    () => dispatch(deleteArticleFailure(key)))
 }
 
 export const search = keywords => ({

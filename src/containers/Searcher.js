@@ -12,7 +12,7 @@ class Searcher extends Component {
   }
 
   handleClose = () => {
-    this.props.closeTag('')
+    this.props.closeTag()
   }
 
   render() {
@@ -22,7 +22,7 @@ class Searcher extends Component {
         placeholder='input search text'
         style={{ width: 150 }}
         onSearch={this.handleSearch}/>
-      { tag !== '' && <span> 
+      { tag !== undefined && <span> 
         <span style={{display: 'inline-block', width: '12px'}}></span>
         <Tag closable onClose={this.handleClose}>{tag}</Tag>
       </span> }
@@ -36,7 +36,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   search: (keywords) => dispatch(search(keywords)),
-  closeTag: (tag) => dispatch(searchTag(tag))
+  closeTag: () => dispatch(searchTag())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Searcher)

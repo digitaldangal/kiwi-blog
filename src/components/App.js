@@ -10,6 +10,8 @@ import ArticleEditorContainer from '../containers/ArticleEditorContainer'
 import ArticleTable from '../containers/ArticleTable'
 import CardListContainer from '../containers/CardListContainer'
 import Dashboard from '../containers/Dashboard'
+import ArticlesManager from '../containers/ArticlesManager'
+import About from './About'
 
 class App extends Component {
   render() {
@@ -26,8 +28,10 @@ class App extends Component {
             </Breadcrumb>
             <Route exact path="/" component={CardListContainer}/>
             <Route path="/list" component={ArticleTable}/>
-            <Route path="/about" component={Dashboard}/>
-            <Route path="/user" component={ArticleEditorContainer}/>
+            <Route path="/about" component={About}/>
+            <Route exact path="/user" component={Dashboard}/>
+            <Route exact path="/user/articlesManager" component={ArticlesManager} />
+            <Route path="/user/articlesManager/editor" component={ArticleEditorContainer} />
             <Route path="/articles/:id" component={Article}/>
           </Content>
           <Footer style={{ textAlign: 'center' }}>

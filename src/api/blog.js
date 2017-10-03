@@ -12,7 +12,7 @@ export default {
     setTimeout(() => cb(articles.data), TIMEOUT)
   },
 
-  saveArticle: (article, success, failure) => {
+  createArticle: (article, success, failure) => {
     /*
     fetch('')
       .then(response => response.json())
@@ -25,6 +25,14 @@ export default {
       })
       .catch(e => failure())
     */
+    setTimeout(() => success(), TIMEOUT)
+  },
+
+  updateArticle: (article, success, failure) => {
+    setTimeout(() => success(), TIMEOUT)
+  },
+
+  deleteArticle: (key, success, failure) => {
     setTimeout(() => success(), TIMEOUT)
   },
 

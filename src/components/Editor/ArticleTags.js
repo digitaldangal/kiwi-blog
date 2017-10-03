@@ -4,7 +4,7 @@ import { Tag, Input, Tooltip, Button } from 'antd'
 class ArticleTags extends Component {
 
   state = {
-    tags: [],
+    tags: this.props.tags || [],
     inputVisible: false,
     inputValue: '',
   }
@@ -12,6 +12,10 @@ class ArticleTags extends Component {
   handleClose = (removedTag) => {
     const tags = this.state.tags.filter(tag => tag !== removedTag)
     this.setState({ tags })
+    const onChange = this.props.onChange
+    if (onChange) {
+      onChange(tags)
+    }
   }
 
   showInput = () => {
@@ -34,7 +38,7 @@ class ArticleTags extends Component {
       inputVisible: false,
       inputValue: '',
     })
-    // update Form field
+    // Update Form field
     // @see https://ant.design/components/form-cn/#components-form-demo-customized-form-controls
     const onChange = this.props.onChange
     if (onChange) {

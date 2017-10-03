@@ -39,7 +39,6 @@ import native from 'ory-editor-plugins-default-native'
 import divider from 'ory-editor-plugins-divider'
 
 import ArticleSaver from './ArticleSaver'
-import content from './content.js'
 import './styles.css'
 
 // react-tap-event-plugin is required for material-ui which is used by ory-editor-ui
@@ -59,7 +58,7 @@ const editor = new Editor({
   plugins: plugins,
   // pass the content states
   editables: [
-    content[0]
+    createEmptyState()
   ]
 })
 
@@ -69,17 +68,19 @@ const Controls = () => <div>
   <Toolbar editor={editor} />
 </div>
 
-const EditableArea = (props) => <div className="container">
-  <div className="editable editable-area">
-    <Editable
+const EditableArea = ({onChange, id}) => {
+  return <div className="container">
+    <div className="editable editable-area">
+      <Editable
         editor={editor}
-        id={content[0].id}
+        id={id}
         // Update state each time editor changed
         // Does this solution cause performance issue?
-        onChange={state => props.onChange(state)}
-    />
+        onChange={state => onChange(state)}
+      />
+    </div>
   </div>
-</div>
+}
 
 class ArticleEditor extends Component {
   state = {
@@ -90,11 +91,17 @@ class ArticleEditor extends Component {
     this.setState({data: state})
   }
 
+  componentWillMount() {
+    editor.trigger.editable.update(this.props.article.content)
+  }
+
   render() {
+    const { article, onCreate, onUpdate, isOperating, isCreate } = this.props
     return <div>
-      <EditableArea onChange={this.handleChange}/>
-      <Controls/>
-      <ArticleSaver onClick={this.props.onClick} isSaving={this.props.isSaving} content={this.state.data}/>
+      <EditableArea onChange={this.handleChange} id={this.props.article.content.id} />
+      <Controls />
+      <ArticleSaver onCreate={onCreate} onUpdate={onUpdate} isOperating={isOperating} isCreate={isCreate}
+        article={{...article, content: this.state.data}} />
     </div>
   }
 }

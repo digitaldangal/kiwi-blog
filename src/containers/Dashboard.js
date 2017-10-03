@@ -15,7 +15,7 @@ class Dashboard extends Component {
   }
 
   handleClickArticles = () => {
-    this.props.history.push('/')
+    this.props.history.push('/user/articlesManager')
   }
 
   render() {
