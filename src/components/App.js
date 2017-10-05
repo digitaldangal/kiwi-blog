@@ -11,6 +11,8 @@ import ArticleTable from '../containers/ArticleTable'
 import CardListContainer from '../containers/CardListContainer'
 import Dashboard from '../containers/Dashboard'
 import ArticlesManager from '../containers/ArticlesManager'
+import Login from '../containers/Login'
+import PrivateRoute from '../containers/PrivateRoute'
 import About from './About'
 
 class App extends Component {
@@ -26,13 +28,14 @@ class App extends Component {
               <Breadcrumb.Item>List</Breadcrumb.Item>
               <Breadcrumb.Item>App</Breadcrumb.Item>
             </Breadcrumb>
-            <Route exact path="/" component={CardListContainer}/>
-            <Route path="/list" component={ArticleTable}/>
-            <Route path="/about" component={About}/>
-            <Route exact path="/user" component={Dashboard}/>
-            <Route exact path="/user/articlesManager" component={ArticlesManager} />
-            <Route path="/user/articlesManager/editor" component={ArticleEditorContainer} />
-            <Route path="/articles/:id" component={Article}/>
+            <Route exact path='/' component={CardListContainer} />
+            <Route path='/login' component={Login} />
+            <Route path='/list' component={ArticleTable} />
+            <Route path='/about' component={About} />
+            <Route path='/articles/:id' component={Article} />
+            <PrivateRoute exact path='/user' component={Dashboard} />
+            <PrivateRoute exact path='/user/articlesManager' component={ArticlesManager} />
+            <PrivateRoute path='/user/articlesManager/editor' component={ArticleEditorContainer} />
           </Content>
           <Footer style={{ textAlign: 'center' }}>
             kiwi-blog ©2017 Created by kennylbj

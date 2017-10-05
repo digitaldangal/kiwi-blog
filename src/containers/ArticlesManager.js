@@ -10,13 +10,6 @@ const EDITOR_URL = '/user/articlesManager/editor'
 
 class ArticlesManager extends Component {
 
-  componentWillMount() {
-    // Global config for message
-    message.config({
-      top: 100
-    })
-  }
-
   componentDidUpdate() {
     if (this.props.isSuccess) {
       message.success('Operation success')

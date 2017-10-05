@@ -51,5 +51,15 @@ export default {
 
   fetchDashboard: (cb) => {
     setTimeout(() => cb(dashboard), TIMEOUT)
+  },
+
+  login: (username, password, success, failure) => {
+    setTimeout(() => {
+      if (username === 'admin' && password === 'admin') {
+        success()
+      } else {
+        failure()
+      }
+    }, TIMEOUT)
   }
 }
