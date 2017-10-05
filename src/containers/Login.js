@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 import { Button, Row, Form, Input, message } from 'antd'
-import { loginAsyn } from '../actions/dashboard'
+import { loginAsyn } from '../actions/authenticate'
 
 const FormItem = Form.Item
 
@@ -80,8 +80,8 @@ class Login extends Component {
 }
   
 const mapStateToProps = state => ({
-  isLoading: state.dashboard.login.isLoading,
-  isAuthenticated: state.dashboard.login.isAuthenticated
+  isLoading: state.authenticate.isLoading,
+  isAuthenticated: state.authenticate.isAuthenticated
   
 })
   

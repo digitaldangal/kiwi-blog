@@ -22,7 +22,7 @@ class PrivateRoute extends Component {
 }
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.dashboard.login.isAuthenticated
+  isAuthenticated: state.authenticate.isAuthenticated
 })
   
 export default withRouter(connect(mapStateToProps, null)(PrivateRoute))
