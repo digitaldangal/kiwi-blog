@@ -4,7 +4,7 @@ import {
   Route
 } from 'react-router-dom'
 import { Layout, Breadcrumb } from 'antd'
-import BlogHeader from './BlogHeader'
+import Header from '../containers/Header'
 import Article from '../containers/Article'
 import ArticleEditorContainer from '../containers/ArticleEditorContainer'
 import ArticleTable from '../containers/ArticleTable'
@@ -21,7 +21,7 @@ class App extends Component {
     return (
       <Router>
         <Layout style={{ minHeight:'100vh' }}>
-          <BlogHeader/>
+          <Header/>
           <Content style={{ padding: '0 50px', marginTop: 64 }}>
             <Breadcrumb style={{ margin: '12px 0' }}>
               <Breadcrumb.Item>Home</Breadcrumb.Item>

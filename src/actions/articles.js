@@ -31,12 +31,12 @@ export const fetchArticlesIfNeeded = () => (dispatch, getState) => {
   }
 }
 
-const createArticleRequest = (article) => ({
+const createArticleRequest = article => ({
   type: types.CREATE_ARTICLE_REQUEST,
   article
 })
 
-const createArticleSuccess = (article) => ({
+const createArticleSuccess = article => ({
   type: types.CREATE_ARTICLE_SUCCESS,
   article
 })
@@ -54,17 +54,17 @@ export const createArticleAsyn = article => dispatch => {
     () => dispatch(createArticleFailure()))
 }
 
-export const updateArticle = (key) => ({
+export const updateArticle = key => ({
   type: types.UPDATE_ARTICLE,
   key
 })
 
-const updateArticleRequest = (article) => ({
+const updateArticleRequest = article => ({
   type: types.UPDATE_ARTICLE_REQUEST,
   article
 })
 
-const updateArticleSuccess = (article) => ({
+const updateArticleSuccess = article => ({
   type: types.UPDATE_ARTICLE_SUCCESS,
   article
 })
@@ -82,17 +82,17 @@ export const updateArticleAsyn = article => dispatch => {
     () => dispatch(updateArticleFailure()))
 }
 
-const deleteArticleRequest = (key) => ({
+const deleteArticleRequest = key => ({
   type: types.DELETE_ARTICLE_REQUEST,
   key
 })
 
-const deleteArticleSuccess = (key) => ({
+const deleteArticleSuccess = key => ({
   type: types.DELETE_ARTICLE_SUCCESS,
   key
 })
 
-const deleteArticleFailure = (key) => ({
+const deleteArticleFailure = key => ({
   type: types.DELETE_ARTICLE_FAILURE,
   key
 })
@@ -153,7 +153,7 @@ const ratingSuccess = (key, rate) => ({
   rate
 })
 
-const ratingFailure = (key) => ({
+const ratingFailure = key => ({
   type: types.RATING_FAILURE,
   key
 })

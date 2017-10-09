@@ -2,6 +2,7 @@ import {
     LOGIN_REQUEST,
     LOGIN_SUCCESS,
     LOGIN_FAILURE,
+    LOGOUT
   } from '../constants/ActionTypes'
     
   const initialState = {
@@ -23,11 +24,16 @@ import {
           isAuthenticated: true
         }
       case LOGIN_FAILURE:
-      return {
-        ...state,
-        isLoading: false,
-        isAuthenticated: false
-      }
+        return {
+          ...state,
+          isLoading: false,
+          isAuthenticated: false
+        }
+      case LOGOUT:
+        return {
+          ...state,
+          isAuthenticated: false
+        }
       default:
         return state
     }

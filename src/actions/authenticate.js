@@ -2,6 +2,7 @@ import {
   LOGIN_REQUEST,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
+  LOGOUT
 } from '../constants/ActionTypes'
 import blog from '../api/blog'
 
@@ -23,3 +24,7 @@ export const loginAsyn = (username, password) => dispatch => {
     () => dispatch(loginSuccess()),
     () => dispatch(loginFailure()))
 }
+
+export const logout = () => ({
+  type: LOGOUT
+})

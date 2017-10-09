@@ -4,14 +4,16 @@ import { withRouter } from 'react-router-dom'
 import { message } from 'antd'
 import ArticleEditor from '../components/Editor/ArticleEditor'
 import { createArticleAsyn, updateArticleAsyn } from '../actions/articles'
+import { selectTab } from '../actions/navigation'
 import content from '../components/Editor/content.js'
 
 class ArticleEditorContainer extends Component {
 
   componentDidUpdate() {
-    const { isSuccess, history } = this.props
+    const { isSuccess, history, dispatch } = this.props
     if (isSuccess) {
       history.push('/')
+      dispatch(selectTab('1'))
       message.success('Operation success')
     }
   }

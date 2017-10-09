@@ -21,7 +21,7 @@ class Dashboard extends Component {
   render() {
     const { visitors, articles, visit, usage, isFetching } = this.props
     return (
-      isFetching ? <Spin size="large"/> : 
+      isFetching ? <Spin size='large'/> : 
       <Row gutter={48}>
         <Col lg={6} md={12}>
           <CountUpCard icon={'team'} title={'Visitors'} number={visitors} color={color.green}/>

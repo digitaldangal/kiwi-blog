@@ -28,7 +28,7 @@ class Login extends Component {
   componentWillReceiveProps(nextProps) {
     const { isLoading, isAuthenticated } = this.props
     if (isLoading && (!nextProps.isLoading) && (!isAuthenticated) && (!nextProps.isAuthenticated)) {
-      message.error("Login failed")
+      message.error("Log in failed")
     }
   }
 
