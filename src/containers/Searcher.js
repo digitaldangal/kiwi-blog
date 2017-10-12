@@ -35,7 +35,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  search: (keywords) => dispatch(search(keywords)),
+  search: keywords => dispatch(search(keywords)),
   closeTag: () => dispatch(searchTag())
 })
 

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import {
   BrowserRouter as Router,
-  Route
+  Route,
+  Switch
 } from 'react-router-dom'
 import { Layout, Breadcrumb } from 'antd'
 import Header from '../containers/Header'
@@ -20,6 +21,8 @@ class App extends Component {
     const { Content, Footer } = Layout
     return (
       <Router>
+        <Switch>
+        <Route path='/login' component={Login} />
         <Layout style={{ minHeight:'100vh' }}>
           <Header/>
           <Content style={{ padding: '0 50px', marginTop: 64 }}>
@@ -29,7 +32,6 @@ class App extends Component {
               <Breadcrumb.Item>App</Breadcrumb.Item>
             </Breadcrumb>
             <Route exact path='/' component={CardListContainer} />
-            <Route path='/login' component={Login} />
             <Route path='/list' component={ArticleTable} />
             <Route path='/about' component={About} />
             <Route path='/articles/:id' component={Article} />
@@ -41,6 +43,7 @@ class App extends Component {
             kiwi-blog ©2017 Created by kennylbj
           </Footer>
         </Layout>
+        </Switch>
       </Router>
     )
   }

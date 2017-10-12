@@ -34,12 +34,10 @@ class ArticleEditorContainer extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    isOperating: state.articles.isOperating,
-    isSuccess: state.articles.isSuccess,
-    article: state.articles.data.find(article => article.key === state.articles.editingKey)
-  }
-}
+const mapStateToProps = state => ({
+  isOperating: state.articles.isOperating,
+  isSuccess: state.articles.isSuccess,
+  article: state.articles.data.find(article => article.key === state.articles.editingKey)
+})
 
 export default withRouter(connect(mapStateToProps, null)(ArticleEditorContainer))

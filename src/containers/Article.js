@@ -28,7 +28,7 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 const mapDispatchToProps = dispatch => ({
-  readArticle: (key) => dispatch(readArticle(key))
+  readArticle: key => dispatch(readArticle(key))
 })
   
 export default connect(mapStateToProps, mapDispatchToProps)(Article)
